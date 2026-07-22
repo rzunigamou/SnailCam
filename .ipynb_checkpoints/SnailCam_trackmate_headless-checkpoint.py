@@ -51,7 +51,7 @@ settings.addSpotFilter(FeatureFilter('RADIUS', 20.0, False))      # radius < 20
 settings.addSpotFilter(FeatureFilter('CIRCULARITY', 0.53, True))  # circularity > 0.53
 
 # Track filters
-settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 100, True)) # number of spots in track > 100 (25 minutes)
+settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 45, True)) # number of spots in track > 100 (25 minutes)
 
 # Tracker: Sparse LAP
 tracker_factory = SparseLAPTrackerFactory()
