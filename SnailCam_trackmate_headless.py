@@ -50,6 +50,9 @@ settings.addSpotFilter(FeatureFilter('RADIUS', 2.8, True))        # radius > 2.8
 settings.addSpotFilter(FeatureFilter('RADIUS', 20.0, False))      # radius < 20
 settings.addSpotFilter(FeatureFilter('CIRCULARITY', 0.53, True))  # circularity > 0.53
 
+# Track filters
+settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 100, True)) # number of spots in track > 100 (25 minutes)
+
 # Tracker: Sparse LAP
 tracker_factory = SparseLAPTrackerFactory()
 settings.trackerFactory = tracker_factory
@@ -63,6 +66,7 @@ tracker_settings[TrackerKeys.KEY_ALLOW_TRACK_SPLITTING] = False
 tracker_settings[TrackerKeys.KEY_ALLOW_TRACK_MERGING] = False
 settings.trackerSettings = tracker_settings
 
+
 # 3) Run
 trackmate = TrackMate(model, settings)
 if not trackmate.checkInput():
@@ -70,8 +74,6 @@ if not trackmate.checkInput():
 if not trackmate.process():
     raise RuntimeError(trackmate.getErrorMessage())
 
-# 3.1) Track filters
-settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 100, True))
 
 # 4) Save XML
 writer = TmXmlWriter(output_xml)
