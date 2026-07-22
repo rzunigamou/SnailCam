@@ -70,6 +70,9 @@ if not trackmate.checkInput():
 if not trackmate.process():
     raise RuntimeError(trackmate.getErrorMessage())
 
+# 3.1) Track filters
+settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 45, True))
+
 # 4) Save XML
 writer = TmXmlWriter(output_xml)
 writer.appendModel(model)
