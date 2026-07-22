@@ -55,7 +55,7 @@ tracker_factory = SparseLAPTrackerFactory()
 settings.trackerFactory = tracker_factory
 tracker_settings = tracker_factory.getDefaultSettings()
 
-tracker_settings[TrackerKeys.KEY_LINKING_MAX_DISTANCE] = 6.0
+tracker_settings[TrackerKeys.KEY_LINKING_MAX_DISTANCE] = 6.0 # One minimum body length
 tracker_settings[TrackerKeys.KEY_GAP_CLOSING_MAX_DISTANCE] = 6.0
 tracker_settings[TrackerKeys.KEY_GAP_CLOSING_MAX_FRAME_GAP] = 2
 tracker_settings[TrackerKeys.KEY_ALLOW_GAP_CLOSING] = True
@@ -71,7 +71,7 @@ if not trackmate.process():
     raise RuntimeError(trackmate.getErrorMessage())
 
 # 3.1) Track filters
-settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 45, True))
+settings.addTrackFilter(FeatureFilter('NUMBER_SPOTS', 100, True))
 
 # 4) Save XML
 writer = TmXmlWriter(output_xml)
